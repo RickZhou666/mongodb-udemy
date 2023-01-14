@@ -1,0 +1,19 @@
+db.products.insertMany([
+{
+    name: 'A book',
+    price: 12.99
+},
+{
+    title: 'T-shirt',
+    seller: { name: 'Rick', age: 29 }
+}
+])
+
+
+db.products.deleteMany({})
+
+
+db.companies.insertOne({name: "Fresh Apples Inc", isStartup: true, employees: 33, funding: 12345678901234567890, details: {ceo: "Rick Zhou"}, tags: [{title: "super"}, {title: "perfect"}], foundingDate: new Date(), insertedAt: new Timestamp()})
+
+12345678901234567890
+12345678901234567000
