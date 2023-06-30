@@ -6,6 +6,64 @@ this is tutorial about mongodb from udemy
 
 1. jira-id must be unique, how to set this as unique?
 
+# 0 Sample Query
+
+<br>
+
+## 0.1 find year month count sort
+```js
+// https://www.mongodb.com/docs/manual/reference/operator/aggregation/sort/
+db.PPBLRAC.aggregate([
+  {
+    $group: {
+      _id: {
+        year: {
+          $year: {
+            $dateFromString: {
+              dateString: '$jiraCreatedAt',
+            },
+          },
+        },
+        month: {
+          $month: {
+            $dateFromString: {
+              dateString: '$jiraCreatedAt',
+            },
+          },
+        },
+      },
+      count: { $sum: 1 },
+    },
+  },
+  {
+    $sort: { _id: -1 },
+  },
+])
+```
+
+<br>
+
+## 0.2 find reason
+```js
+// https://www.mongodb.com/docs/manual/core/aggregation-pipeline/
+db.PPBLRAC.aggregate([
+  {
+    $group: { _id: '$resolutionReason', count: { $sum: 1 } },
+  },
+])
+```
+
+<br>
+
+## 0.3 config setup 
+```js
+// display more records
+config.set("displayBatchSize", 300)
+
+config.set("displayBatchSize", 20)
+```
+
+
 # 0 Tips
 
 ## Docker MongoDB
